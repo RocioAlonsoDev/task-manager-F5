@@ -1,0 +1,15 @@
+{
+    "name": "herse/03-todo-list",
+    "autoload":{
+        "psr-4":{
+            "Database\\": "database"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rocio",
+            "email": "rocioalonso.dev@gmail.com"
+        }
+    ],
+    "require": {}
+}
