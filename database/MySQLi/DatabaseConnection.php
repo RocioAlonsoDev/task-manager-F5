@@ -1,5 +1,4 @@
 <?php 
-
 namespace Database\MySQLi;
 
 class DatabaseConnection {
@@ -32,24 +31,5 @@ class DatabaseConnection {
         $results = $statement -> execute($parameters);
         return $results;
     }
-    
-
 }
-
-$database = 'gestor-de-tareas';
-$server = 'localhost';
-$username = 'root';
-$password = '';
-
-$db = new DatabaseConnection($server,$username,$password,$database);
-$db -> connect();
-$query = 'SELECT * FROM users';
-$results = $db -> execute_query($query);
-print_r($results);
-
-// foreach($results as $row){
-//     echo $row['username'];
-// }
-
-
 ?>

@@ -2,7 +2,8 @@
     "name": "herse/03-todo-list",
     "autoload":{
         "psr-4":{
-            "Database\\": "database"
+            "Database\\": "database",
+            "App\\": "app"
         }
     },
     "authors": [
