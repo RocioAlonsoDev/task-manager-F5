@@ -1,4 +1,5 @@
 <?php 
+
 namespace Database\MySQLi;
 
 class DatabaseConnection {
