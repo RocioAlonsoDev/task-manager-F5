@@ -10,13 +10,15 @@ $users = new UsersController;
 //     "name" => "Usuario Prueba"
 // ]);
 
-$users -> update([
-    'username'=>'pruebaupdate',
-    'password'=>'654321',
-    'name'=>'pruebaupdate',
-    'userID'=>'1'
-]);
+// $users -> update([
+//     'username'=>'pruebaupdate',
+//     'password'=>'654321',
+//     'name'=>'pruebaupdate',
+//     'userID'=>'4'
+// ]);
 
-
+// $users -> destroy([
+//     'userID'=>'3'
+// ]);
 
 ?>

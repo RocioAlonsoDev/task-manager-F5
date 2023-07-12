@@ -38,7 +38,7 @@ class UsersController{
     public function edit(){
 
     }
-    
+
     public function update($data){
         $database = 'task-manager';
         $server = 'localhost';
@@ -61,10 +61,26 @@ class UsersController{
         }
     }
 
-    public function destroy(){
+    public function destroy($data){
+        $database = 'task-manager';
+        $server = 'localhost';
+        $username = 'root';
+        $password = '';
 
+        $db = new DatabaseConnection($server,$username,$password,$database);
+
+        $db -> connect();
+
+        $query = "DELETE FROM users
+                    WHERE userID = ?";
+        $results = $db -> execute_query($query,[$data['userID']]);
+
+        if(!empty($results)){
+            echo "El registro se ha eliminado con éxito.";
+        } else {
+            echo "Algo ha salido mal";
+        }
     }
-
 }
 
 ?>
