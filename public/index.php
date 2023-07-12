@@ -5,9 +5,9 @@ require "vendor/autoload.php";
 $users = new UsersController;
 
 // $users -> store([
-//     "username" => "prueba",
+//     "username" => "prueba3",
 //     "password" => "123456",
-//     "name" => "Usuario Prueba"
+//     "name" => "Usuario Prueba3"
 // ]);
 
 // $users -> update([
@@ -19,6 +19,11 @@ $users = new UsersController;
 
 // $users -> destroy([
 //     'userID'=>'3'
+// ]);
+
+// $users -> show([
+//     'username' => 'prueba',
+//     'password' => '123456'
 // ]);
 
 ?>

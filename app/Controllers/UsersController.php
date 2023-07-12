@@ -4,13 +4,14 @@ use Database\MySQLi\DatabaseConnection;
 
 class UsersController{
     
-
     public function index(){
 
     }
+
     public function create(){
 
     }
+
     public function store($data){
         $database = 'task-manager';
         $server = 'localhost';
@@ -25,16 +26,36 @@ class UsersController{
                     VALUES (?,?,?)";
         $results = $db -> execute_query($query,[$data['username'],$data['password'],$data['name']]);
 
-        if(!empty($results)){
+        if(empty($results)){
             echo "El registro se ha realizado con éxito.";
         } else {
             echo "Algo ha salido mal";
         }
     }
 
-    public function show(){
+    public function show($data){
+        $database = 'task-manager';
+        $server = 'localhost';
+        $username = 'root';
+        $password = '';
 
+        $db = new DatabaseConnection($server,$username,$password,$database);
+
+        $db -> connect();
+
+        $query = "SELECT * FROM users WHERE username = ? and password = ?";
+        
+        $results = $db -> execute_query($query,[$data['username'],$data['password']]);
+
+        if (!empty($results)){
+            while($row = $results->fetch_assoc()){
+                echo "userId:".$row['userID'];
+            }
+        } else {
+            echo "Algo ha salido mal";
+        }
     }
+
     public function edit(){
 
     }
@@ -54,7 +75,7 @@ class UsersController{
                     WHERE userID = ?";
         $results = $db -> execute_query($query,[$data['username'],$data['password'],$data['name'],$data['userID']]);
 
-        if(!empty($results)){
+        if(empty($results)){
             echo "El registro se ha actualizado con éxito.";
         } else {
             echo "Algo ha salido mal";
@@ -75,7 +96,7 @@ class UsersController{
                     WHERE userID = ?";
         $results = $db -> execute_query($query,[$data['userID']]);
 
-        if(!empty($results)){
+        if(empty($results)){
             echo "El registro se ha eliminado con éxito.";
         } else {
             echo "Algo ha salido mal";
