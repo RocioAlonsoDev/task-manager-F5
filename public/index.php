@@ -1,29 +1,35 @@
 <?php 
-use App\Controllers\UsersController;
-require "vendor/autoload.php";
+    use App\Controllers\UsersController;
+    require "../vendor/autoload.php";
 
-$users = new UsersController;
+    session_start();
 
-// $users -> store([
-//     "username" => "prueba3",
-//     "password" => "123456",
-//     "name" => "Usuario Prueba3"
-// ]);
+    if (!isset($_SESSION['userID'])){
+        header("location: login.php");
+        die();
+    }
 
-// $users -> update([
-//     'username'=>'pruebaupdate',
-//     'password'=>'654321',
-//     'name'=>'pruebaupdate',
-//     'userID'=>'4'
-// ]);
+    
 
-// $users -> destroy([
-//     'userID'=>'3'
-// ]);
-
-// $users -> show([
-//     'username' => 'prueba',
-//     'password' => '123456'
-// ]);
+    
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <h1>Task Manager</h1>
+            <?php 
+                $user = new UsersController;
+
+                $user -> show(["userID"=>$_SESSION['userID']]);
+            ?>
+        </main>
+    </body>
+</html>

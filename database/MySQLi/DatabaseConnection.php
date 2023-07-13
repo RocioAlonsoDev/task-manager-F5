@@ -27,11 +27,8 @@ class DatabaseConnection {
         $set_names -> execute();
     }
 
-    public function execute_query($query,$parameters = []){
-        $statement = $this -> connection -> prepare($query);
-        $statement -> execute($parameters);
-        $results = $statement -> get_result();
-        return $results;
+    public function getConnection(){
+        return $this -> connection;
     }
 }
 ?>
