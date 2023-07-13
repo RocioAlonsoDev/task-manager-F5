@@ -19,7 +19,7 @@ class UsersController{
         $results = $statement -> get_result();
         return $results;
     }
-
+    
     public function login($data){
 
         $query = "SELECT userID FROM users WHERE username = ? and password = ?";
@@ -37,36 +37,6 @@ class UsersController{
         }
     }
 
-    // public function check_session($data){
-
-    //     $query = "SELECT userID FROM users WHERE userID = ?";
-        
-    //     $results = $this -> execute_query($query,[$data['userID']]);
-
-    //     $row = $results->fetch_assoc();
-
-    //     $login_session = $row['userID'];
-
-    //     if (!isset($_SESSION['userID'])){
-    //         header("location: login.php");
-    //         die();
-    //     }
-    // }
-
-
-
-
-
-
-
-    public function index(){
-        
-    }
-
-    public function create(){
-        
-    }
-
     public function store($data){
 
         $query = "INSERT INTO users (username,password,name) 
@@ -74,7 +44,7 @@ class UsersController{
         $results = $this -> execute_query($query,[$data['username'],$data['password'],$data['name']]);
 
         if(empty($results)){
-            echo "El registro se ha realizado con éxito.";
+            header("location: login.php");
         } else {
             echo "Algo ha salido mal";
         }

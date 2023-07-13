@@ -12,18 +12,20 @@
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-            
+        
+        $name = test_input($_POST["name"]);
         $username = test_input($_POST["username"]);
         $password = test_input($_POST["password"]);
         
         $user = new UsersController;
 
-        $user -> login([
+        $user -> store([
             "username" => "$username",
-            "password" => "$password"
+            "password" => "$password",
+            "name" => "$name"
         ]);
     }
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -37,17 +39,14 @@
     <main>
         <h1>Task Manager</h1>
         <form action="" method="POST">
+            <input type="text" placeholder="What's your name?" name="name" required>
             <input type="text" placeholder="username" name="username" required>
             <input type="password" placeholder="password" name="password" required>
             <input type="submit" value="Enter">
-            <a href="signup.php">
-                <p>Don't have an account yet? Sign up here.</p>
+            <a href="login.php">
+                <p>Already have an account? Log in here.</p>
             </a>
         </form>
     </main>
 </body>
 </html>
-
-
-
-
